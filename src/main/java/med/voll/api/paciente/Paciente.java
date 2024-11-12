@@ -1,4 +1,4 @@
-package med.voll.api.medico;
+package med.voll.api.paciente;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,4 +24,12 @@ public class Paciente {
 
     @Embedded
     private Endereco endereco;
+
+    public Paciente(DadosCadastroPaciente dados) {
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.telefone = dados.telefone();
+        this.cpf = dados.cpf();
+        this.endereco = new Endereco(dados.endereco());
+    }
 }
